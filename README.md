@@ -1,2 +1,2 @@
 # castaway
-Emmy, Brandon, and Katie's Interactive Narrative group project
+Emmy, Brandon, and Katie's Interactive Narrative group project for DTC477
