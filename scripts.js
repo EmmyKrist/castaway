@@ -63,5 +63,25 @@ Homepage = new Story(
   "imagehere",
   "Written by Brandon Salisbury, and Katie Pry, and Emmy Krist"
 );
+decision1 = new Story(
+"page3",
+"imagehere",
+"Written by Brandon Salisbury, and Katie Pry, and Emmy Krist",
+);
+decision2 = new Story(
+"page4",
+"imagehere",
+"Written by Brandon Salisbury, and Katie Pry, and Emmy Krist",
+);
+decision3 = new Story(
+"page5",
+"imagehere",
+"Written by Brandon Salisbury, and Katie Pry, and Emmy Krist",
+);
+decision4 = new Story(
+"page6",
+"imagehere",
+"Written by Brandon Salisbury, and Katie Pry, and Emmy Krist",
+);
 
 window.onload = function() {}
