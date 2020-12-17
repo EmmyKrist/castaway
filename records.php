@@ -27,6 +27,9 @@ $table1 = "choiceset1";
 $table2 = "choiceset2";
 $table3 = "choiceset3";
 $table4 = "choiceset4";
+$table5 = "choiceset5";
+$table6 = "choiceset6";
+$table7 = "choiceset7";
 
 
 // prep default values of form display
@@ -146,7 +149,7 @@ if ($DBactionToTake == "edit") {
 
 <form method="post">
 	<p>
-		Recipe: <input type="text" name="rName" id="rName" value="<?= $displayName; ?>">
+		Choice: <input type="text" name="rName" id="rName" value="<?= $displayName; ?>">
 	</p>
 	<p>
 		Table: 
@@ -154,6 +157,10 @@ if ($DBactionToTake == "edit") {
 			<option value="<?= $table1; ?>" <? if ($displayTable == $table1) echo "selected"; ?>><?= $table1; ?></option>
 			<option value="<?= $table2; ?>" <? if ($displayTable == $table2) echo "selected"; ?>><?= $table2; ?></option>
 			<option value="<?= $table3; ?>" <? if ($displayTable == $table3) echo "selected"; ?>><?= $table3; ?></option>
+      <option value="<?= $table4; ?>" <? if ($displayTable == $table4) echo "selected"; ?>><?= $table4; ?></option>
+      <option value="<?= $table5; ?>" <? if ($displayTable == $table5) echo "selected"; ?>><?= $table5; ?></option>
+      <option value="<?= $table6; ?>" <? if ($displayTable == $table6) echo "selected"; ?>><?= $table6; ?></option>
+      <option value="<?= $table7; ?>" <? if ($displayTable == $table7) echo "selected"; ?>><?= $table7; ?></option>
 		</select>
 	</p>
 	<p>
@@ -219,6 +226,22 @@ if ($DBactionToTake == "edit") {
 	<hr>
 	<h3>Table: <?= $table3; ?></h3>
 	<?= outputRecords($table3); ?>
+  
+  	<hr>
+	<h3>Table: <?= $table4; ?></h3>
+	<?= outputRecords($table4); ?>
+  
+  	<hr>
+	<h3>Table: <?= $table5; ?></h3>
+	<?= outputRecords($table5); ?>
+  
+  	<hr>
+	<h3>Table: <?= $table6; ?></h3>
+	<?= outputRecords($table6); ?>
+  
+  	<hr>
+	<h3>Table: <?= $table7; ?></h3>
+	<?= outputRecords($table7); ?>
 
 </body>
 </html>
