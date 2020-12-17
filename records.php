@@ -23,9 +23,10 @@ require 'database.php';
 
 
 // what are the 3 table names?
-$table1 = "s";
-$table2 = "";
-$table3 = "";
+$table1 = "choiceset1";
+$table2 = "choiceset2";
+$table3 = "choiceset3";
+$table4 = "choiceset4";
 
 
 // prep default values of form display
