@@ -20,7 +20,7 @@ function loadFileInto(fromFile, whereTo) {
 
 				responseHTML = "";
 				for (x = 0; x < responseArray.length; x++) {
-					responseHTML += "<li>" + responseArray[x] + "</li>";
+					responseHTML += "<li>" + responseArray[x].content + "</li>";
 				}
 				document.querySelector(whereTo).innerHTML = responseHTML;
 			} else {
