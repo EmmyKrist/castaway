@@ -36,11 +36,21 @@ function loadFileInto(fromFile, whereTo) {
 	ajax.send();
 
 }
-
-function Story(storyTitle, storyImageSrc, storyContributors) {
+ /*
+function Story(storyTitle, storyImageSrc, storyContributors, storyID) {
 	this.title = storyTitle;
 	this.imgSrc = storyImageSrc;
 	this.contributor = storyContributors;
+  this.id = storyID;
+  */
+  
+  function Story(storyTitle, storyImageSrc, storyOption1Filename, storyOption2Filename, storyOption3Filename, storyContributor){
+  this.title = storyTitle;
+  this.imgSrc = storyImageSrc;
+  this.fileIngredients = storyIngredientsFilename;
+  this.fileEquipment = recipeEquipmentFilename;
+  this.fileDirections = recipeDirectionsFilename;
+  this.contributor = recipeContributor;
 
 	this.displayRecipe = function() {
 		layoutTitle = document.querySelectorAll("INSERTTITLECSS");
@@ -53,10 +63,40 @@ function Story(storyTitle, storyImageSrc, storyContributors) {
 		//document.getElementById("image")= "url(" + this.imgSrc" + )";
 		document.getElementById("image").src = this.imgSrc;
 
-		layoutFilename = "INSERTFILENAME";
+		layoutFilename = "functions.php?id=" + this.id + "&list=directions";
 		loadFileInto(layoutFilename);
 	}
 }
+
+
+
+
+ layoutFilename = "Option 1/" + this.fileIngredients;
+    loadFileInto(layoutFilename, "ingredients");
+    
+    layoutFilename = "recipes/" + this.fileEquipment;
+    loadFileInto(layoutFilename, "equipment");
+    
+     layoutFilename = "recipes/" + this.fileDirections;
+    loadFileInto(layoutFilename, "directions");
+  }
+}
+
+Lasagna = new Recipe(
+"Lasagna",
+"https://images.unsplash.com/photo-1551892269-860b1e482f98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+"lasagna-ingredients.html",
+"lasagna-equipment.html",
+"lasagna-directions.html",
+"Contributed by Emmy Krist"
+);
+
+
+
+
+/*
+
+
 //place different pages below
 Homepage = new Story(
 	"Page 1",
@@ -83,6 +123,6 @@ decision4 = new Story(
 	"imagehere",
 	"Written by Brandon Salisbury, and Katie Pry, and Emmy Krist",
 );
-
+*/
 
 
