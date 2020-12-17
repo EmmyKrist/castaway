@@ -84,4 +84,5 @@ decision4 = new Story(
 	"Written by Brandon Salisbury, and Katie Pry, and Emmy Krist",
 );
 
-window.onload = function() {}
+
+
