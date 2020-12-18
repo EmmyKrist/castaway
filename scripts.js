@@ -1,3 +1,5 @@
+//beginning of AJAX from Tor's demonstration.
+
 function loadFileInto(fromFile, whereTo) {
 
 	// creating a new XMLHttpRequest object
@@ -24,7 +26,7 @@ function loadFileInto(fromFile, whereTo) {
 				}
 				document.querySelector(whereTo).innerHTML = responseHTML;
 			} else {
-				console.log("Error: no recipe/list found.");
+				console.log("Error: no story/list found.");
 			}
 
 		} else if ((this.readyState == 4) && (this.status != 200)) {
@@ -44,51 +46,56 @@ function Story(storyTitle, storyImageSrc, storyContributors, storyID) {
   this.id = storyID;
   */
   
-  function Story(storyTitle, storyImageSrc, storyOption1Filename, storyOption2Filename, storyOption3Filename, storyContributor){
+  function Story(storyTitle, storyImageSrc, storyOption1Filename, storyOption2Filename, storyOption3Filename, storyOption4Filename, storyContributor){
   this.title = storyTitle;
   this.imgSrc = storyImageSrc;
-  this.fileIngredients = storyIngredientsFilename;
-  this.fileEquipment = recipeEquipmentFilename;
-  this.fileDirections = recipeDirectionsFilename;
-  this.contributor = recipeContributor;
+  this.fileOption1 = storyOption1Filename;
+  this.fileOption2 = storyOption2Filename;
+  this.fileOption3 = storyOption3Filename;
+  this.fileOption4 = storyOption4Filename;
+  this.contributor = storyContributor;
 
-	this.displayRecipe = function() {
-		layoutTitle = document.querySelectorAll("INSERTTITLECSS");
-		layoutTitle[0].innerHTML = this.title;
-
-		layoutContributor = document.querySelectorAll("INSERTAUTHORCSS");
-		layoutContributor[0].innerHTML = this.contributor;
-
-		//image not funtional, don't forget to fix
-		//document.getElementById("image")= "url(" + this.imgSrc" + )";
-		document.getElementById("image").src = this.imgSrc;
-
-		layoutFilename = "functions.php?id=" + this.id + "&list=directions";
-		loadFileInto(layoutFilename);
-	}
-}
-
-
-
-
- layoutFilename = "Option 1/" + this.fileIngredients;
-    loadFileInto(layoutFilename, "ingredients");
+this.displayRecipe = function(){
+    layoutTitle = document.querySelectorAll("#headline h1");
+    layoutTitle[0].innerHTML = this.title;
     
-    layoutFilename = "recipes/" + this.fileEquipment;
-    loadFileInto(layoutFilename, "equipment");
+    layoutContributor = document.querySelectorAll("#headline h4");
+    layoutContributor[0].innerHTML = this.contributor;
     
-     layoutFilename = "recipes/" + this.fileDirections;
-    loadFileInto(layoutFilename, "directions");
+    //image not funtional, don't forget to fix
+   //document.getElementById("image")= "url(" + this.imgSrc" + )";
+ //  document.getElementById("image").src = this.imgSrc;
+
+    layoutFilename = "Option 1/" + this.fileOption1;
+    loadFileInto(layoutFilename, "option1");
+    
+    layoutFilename = "Option 1/" + this.fileOption2;
+    loadFileInto(layoutFilename, "option1-1");
+    
+     layoutFilename = "Option 1/" + this.fileOption3;
+    loadFileInto(layoutFilename, "cave");
+  
+    layoutFilename = "Option 1/" + this.fileOption4;
+    loadFileInto(layoutFilename, "sleep");
   }
 }
 
-Lasagna = new Recipe(
-"Lasagna",
+Story = new Story(
+"Option 1",
 "https://images.unsplash.com/photo-1551892269-860b1e482f98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-"lasagna-ingredients.html",
-"lasagna-equipment.html",
-"lasagna-directions.html",
-"Contributed by Emmy Krist"
+"option1.html",
+"option1-1.html",
+"cave.html",
+"sleep.html"
+);
+
+Story = new Story(
+"Option 2",
+"https://images.unsplash.com/photo-1551892269-860b1e482f98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+"explore.html",
+"fire.html",
+"freshwater.html",
+"option2.html"
 );
 
 
