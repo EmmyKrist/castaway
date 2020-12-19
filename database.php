@@ -3,13 +3,11 @@
 // This file opens a MySQL connection to the database you created in cPanel
 
 // define database values
-$databaseServer = "64.225.102.54"; // My IP number from my own cPanel.
-$databaseName = "ekristco_castaway"; // The database name given to me by the cPanel Wizard.
+$databaseServer = "138.68.243.154"; // IP number of database, may be on the same server
+$databaseName = "kprycom1_kpry-477.com"; // database name
+$databaseUser = "kprycom1_castawayadmin"; // database username
+$databasePassword = "Shelly817!!";  // user password
 
-$databaseUser = "ekristco_castawayadmin";
-
-$databasePassword = "FQMqN15)]K7G";  // A randomly generated password.
-$databaseTable = "";  // main table name
 
 /*
 Available columns in each of the 3 tables:
