@@ -1,0 +1,1 @@
+[19-Dec-2020 21:21:17 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'kprycom1_castawayadmin'@'bjm.reclaimhosting.com' (using password: YES) in /home/ekristco/public_html/repositories/castaway/database.php on line 22
