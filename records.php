@@ -4,11 +4,13 @@
 
 As demonstrated in Unit 3, Lesson 14...
 
-This file contains a form that can add and edit records in your recipes database tables. 
+This file contains a form that can add and edit records in your options database tables. 
 The HTML form submits back to itself for processing.
 
 It assumes your 3 tables are named:
-
+- ingredients
+- equipment
+- directions
 
 These spellings have to be identical, including how the letters are lowercase.
 
@@ -23,13 +25,8 @@ require 'database.php';
 
 
 // what are the 3 table names?
-$table1 = "choiceset1";
-$table2 = "choiceset2";
-$table3 = "choiceset3";
-$table4 = "choiceset4";
-$table5 = "choiceset5";
-$table6 = "choiceset6";
-$table7 = "choiceset7";
+$table1 = "Option 1";
+$table2 = "Option 2";
 
 
 // prep default values of form display
@@ -43,8 +40,8 @@ $displayText = "";
 
 // read submitted data, if any, from the $_REQUEST array, which contains GET and POST
 $DBactionToTake = $_REQUEST["dba"];
-$recipeID = mysqli_real_escape_string($db, $_REQUEST["rID"]);
-$recipeTable = mysqli_real_escape_string($db, $_REQUEST["rTable"]);
+$castawayID = mysqli_real_escape_string($db, $_REQUEST["rID"]);
+$castawayTable = mysqli_real_escape_string($db, $_REQUEST["rTable"]);
 $recipeNumber = mysqli_real_escape_string($db, $_REQUEST["rNumber"]);
 $recipeName = mysqli_real_escape_string($db, $_REQUEST["rName"]);
 $recipeText = mysqli_real_escape_string($db, $_REQUEST["rText"]);
@@ -61,15 +58,15 @@ $recipeText = mysqli_real_escape_string($db, $_REQUEST["rText"]);
 if ($DBactionToTake == "edit") {
 	
 	// fetch and display record of that ID for editing
-	$sql = "SELECT * FROM $recipeTable
-					WHERE id=$recipeID";
+	$sql = "SELECT * FROM $optionsTable
+					WHERE id=$optionsID";
 	$result = $db->query($sql);
 	if (!$result) die("Select Error: " . $sql . "<br>" . $db->error);
 	
 	// if there is a result, let's display it; we assume it's only 1 row
 	if ($result->num_rows > 0) {
 		$row = $result->fetch_assoc();
-		$displayTable = $recipeTable;
+		$displayTable = $optionsTable;
 		$displayName = $row["name"];
 		$displayNumber= $row["sequence"];
 		$displayText = $row["content"];
@@ -82,37 +79,37 @@ if ($DBactionToTake == "edit") {
 } else if ($DBactionToTake == "add") {
 	
 	// make sure there's actually text submitted
-	if ($recipeText != "") {
+	if ($optionsText != "") {
 	
 		// make sure the same data isn't being submitted twice
-		$sql = "SELECT * FROM $recipeTable
-						WHERE name='$recipeName' AND sequence='$recipeNumber' AND content='$recipeText'";
+		$sql = "SELECT * FROM $optionsTable
+						WHERE name='$optionsName' AND sequence='$optionsNumber' AND content='$optionsText'";
 		$result = $db->query($sql);
 		if (!$result) die("Add/Select Error: " . $sql . "<br>" . $db->error);
 
 		if ($result->num_rows == 0) {
 			// add new submitted record to DB, then display blank form
-			$sql = "INSERT INTO $recipeTable (name, sequence, content)
-							VALUES ( '$recipeName', '$recipeNumber', '$recipeText')";
+			$sql = "INSERT INTO $optionsTable (name, sequence, content)
+							VALUES ( '$optionsName', '$optionsNumber', '$optionsText')";
 			if ($db->query($sql) !== TRUE) die("Insert Error: " . $sql . "<br>" . $db->error);
 		}
 
 	}
 	
-	$displayTable = $recipeTable;
-	$displayName = $recipeName;
+	$displayTable = $optionsTable;
+	$displayName = $optionsName;
 
 	
 } else if ($DBactionToTake == "save") {
 	
 	// update record in DB, then display blank form
-	$sql = "UPDATE $recipeTable 
-					SET name='$recipeName', sequence='$recipeNumber', content='$recipeText' 
-					WHERE id=$recipeID";
+	$sql = "UPDATE $optionsTable 
+					SET name='$optionsName', sequence='$optionsNumber', content='$optionsText' 
+					WHERE id=$optionsID";
 	if ($db->query($sql) !== TRUE) die("Update Error: " . $sql . "<br>" . $db->error);
 	
-	$displayTable = $recipeTable;
-	$displayName = $recipeName;
+	$displayTable = $optionsTable;
+	$displayName = $optionsName;
 	
 } else {
 	
@@ -128,7 +125,7 @@ if ($DBactionToTake == "edit") {
 	<!-- meta tags and title -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Recipe DB Management</title>
+	<title>Options DB Management</title>
 	<script>
 	</script>
 	<style>
@@ -149,7 +146,7 @@ if ($DBactionToTake == "edit") {
 
 <form method="post">
 	<p>
-		Choice: <input type="text" name="rName" id="rName" value="<?= $displayName; ?>">
+		Recipe: <input type="text" name="rName" id="rName" value="<?= $displayName; ?>">
 	</p>
 	<p>
 		Table: 
@@ -157,10 +154,6 @@ if ($DBactionToTake == "edit") {
 			<option value="<?= $table1; ?>" <? if ($displayTable == $table1) echo "selected"; ?>><?= $table1; ?></option>
 			<option value="<?= $table2; ?>" <? if ($displayTable == $table2) echo "selected"; ?>><?= $table2; ?></option>
 			<option value="<?= $table3; ?>" <? if ($displayTable == $table3) echo "selected"; ?>><?= $table3; ?></option>
-      <option value="<?= $table4; ?>" <? if ($displayTable == $table4) echo "selected"; ?>><?= $table4; ?></option>
-      <option value="<?= $table5; ?>" <? if ($displayTable == $table5) echo "selected"; ?>><?= $table5; ?></option>
-      <option value="<?= $table6; ?>" <? if ($displayTable == $table6) echo "selected"; ?>><?= $table6; ?></option>
-      <option value="<?= $table7; ?>" <? if ($displayTable == $table7) echo "selected"; ?>><?= $table7; ?></option>
 		</select>
 	</p>
 	<p>
@@ -224,24 +217,7 @@ if ($DBactionToTake == "edit") {
 	<?= outputRecords($table2); ?>
 	
 	<hr>
-	<h3>Table: <?= $table3; ?></h3>
-	<?= outputRecords($table3); ?>
-  
-  	<hr>
-	<h3>Table: <?= $table4; ?></h3>
-	<?= outputRecords($table4); ?>
-  
-  	<hr>
-	<h3>Table: <?= $table5; ?></h3>
-	<?= outputRecords($table5); ?>
-  
-  	<hr>
-	<h3>Table: <?= $table6; ?></h3>
-	<?= outputRecords($table6); ?>
-  
-  	<hr>
-	<h3>Table: <?= $table7; ?></h3>
-	<?= outputRecords($table7); ?>
+	
 
 </body>
 </html>
