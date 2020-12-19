@@ -7,10 +7,7 @@ As demonstrated in Unit 3, Lesson 14...
 This file contains a form that can add and edit records in your options database tables. 
 The HTML form submits back to itself for processing.
 
-It assumes your 3 tables are named:
-- ingredients
-- equipment
-- directions
+Assumes
 
 These spellings have to be identical, including how the letters are lowercase.
 
@@ -22,11 +19,11 @@ $table1, $table2, and $table3.
 
 // require the database configuration you set up in database.php
 require 'database.php';
-
+$sql = "EXPLAIN SELECT * FROM `Option 1`";
 
 // what are the 3 table names?
-$table1 = "Option 1";
-$table2 = "Option 2";
+$table1 = "choices";
+$table2 = "choices2";
 
 
 // prep default values of form display
@@ -70,7 +67,7 @@ if ($DBactionToTake == "edit") {
 		$displayName = $row["name"];
 		$displayNumber= $row["sequence"];
 		$displayText = $row["content"];
-		$displayID = $recipeID;
+		$displayID = $choicesID;
 		$displayDBaction = "save";
 	}
 	
@@ -146,14 +143,14 @@ if ($DBactionToTake == "edit") {
 
 <form method="post">
 	<p>
-		Recipe: <input type="text" name="rName" id="rName" value="<?= $displayName; ?>">
+		Choice 1 <input type="text" name="rName" id="rName" value="<?= $displayName; ?>">
 	</p>
 	<p>
 		Table: 
 		<select name="rTable" id="rTable">
 			<option value="<?= $table1; ?>" <? if ($displayTable == $table1) echo "selected"; ?>><?= $table1; ?></option>
 			<option value="<?= $table2; ?>" <? if ($displayTable == $table2) echo "selected"; ?>><?= $table2; ?></option>
-			<option value="<?= $table3; ?>" <? if ($displayTable == $table3) echo "selected"; ?>><?= $table3; ?></option>
+			
 		</select>
 	</p>
 	<p>
@@ -186,7 +183,7 @@ if ($DBactionToTake == "edit") {
 			
 			echo "<table>";
 			echo "<tr>" . 
-						"<td><b>Recipe</b></td>" . 
+						"<td><b>Choices</b></td>" . 
 						"<td><b>#</b></td>" . 
 						"<td><b>Text Content</b></td>" . 
 						"<td></td>" . 
