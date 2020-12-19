@@ -40,11 +40,11 @@ $displayText = "";
 
 // read submitted data, if any, from the $_REQUEST array, which contains GET and POST
 $DBactionToTake = $_REQUEST["dba"];
-$castawayID = mysqli_real_escape_string($db, $_REQUEST["rID"]);
-$castawayTable = mysqli_real_escape_string($db, $_REQUEST["rTable"]);
-$recipeNumber = mysqli_real_escape_string($db, $_REQUEST["rNumber"]);
-$recipeName = mysqli_real_escape_string($db, $_REQUEST["rName"]);
-$recipeText = mysqli_real_escape_string($db, $_REQUEST["rText"]);
+$choicesID = mysqli_real_escape_string($db, $_REQUEST["rID"]);
+$choicesTable = mysqli_real_escape_string($db, $_REQUEST["rTable"]);
+$choicesNumber = mysqli_real_escape_string($db, $_REQUEST["rNumber"]);
+$choicesName = mysqli_real_escape_string($db, $_REQUEST["rName"]);
+$choicesText = mysqli_real_escape_string($db, $_REQUEST["rText"]);
 
 
 
@@ -58,15 +58,15 @@ $recipeText = mysqli_real_escape_string($db, $_REQUEST["rText"]);
 if ($DBactionToTake == "edit") {
 	
 	// fetch and display record of that ID for editing
-	$sql = "SELECT * FROM $optionsTable
-					WHERE id=$optionsID";
+	$sql = "SELECT * FROM $choicesTable
+					WHERE id=$choicesID";
 	$result = $db->query($sql);
 	if (!$result) die("Select Error: " . $sql . "<br>" . $db->error);
 	
 	// if there is a result, let's display it; we assume it's only 1 row
 	if ($result->num_rows > 0) {
 		$row = $result->fetch_assoc();
-		$displayTable = $optionsTable;
+		$displayTable = $choicesTable;
 		$displayName = $row["name"];
 		$displayNumber= $row["sequence"];
 		$displayText = $row["content"];
@@ -79,37 +79,37 @@ if ($DBactionToTake == "edit") {
 } else if ($DBactionToTake == "add") {
 	
 	// make sure there's actually text submitted
-	if ($optionsText != "") {
+	if ($choicesText != "") {
 	
 		// make sure the same data isn't being submitted twice
-		$sql = "SELECT * FROM $optionsTable
-						WHERE name='$optionsName' AND sequence='$optionsNumber' AND content='$optionsText'";
+		$sql = "SELECT * FROM $choicesTable
+						WHERE name='$choicesName' AND sequence='$choicesNumber' AND content='$choicesText'";
 		$result = $db->query($sql);
 		if (!$result) die("Add/Select Error: " . $sql . "<br>" . $db->error);
 
 		if ($result->num_rows == 0) {
 			// add new submitted record to DB, then display blank form
-			$sql = "INSERT INTO $optionsTable (name, sequence, content)
-							VALUES ( '$optionsName', '$optionsNumber', '$optionsText')";
+			$sql = "INSERT INTO $choicesTable (name, sequence, content)
+							VALUES ( '$choicesName', '$choicesNumber', '$choicesText')";
 			if ($db->query($sql) !== TRUE) die("Insert Error: " . $sql . "<br>" . $db->error);
 		}
 
 	}
 	
-	$displayTable = $optionsTable;
-	$displayName = $optionsName;
+	$displayTable = $choicesTable;
+	$displayName = $choicesName;
 
 	
 } else if ($DBactionToTake == "save") {
 	
 	// update record in DB, then display blank form
-	$sql = "UPDATE $optionsTable 
-					SET name='$optionsName', sequence='$optionsNumber', content='$optionsText' 
-					WHERE id=$optionsID";
+	$sql = "UPDATE $choicesTable 
+					SET name='$choicesName', sequence='$choicesNumber', content='$choicesText' 
+					WHERE id=$choicesID";
 	if ($db->query($sql) !== TRUE) die("Update Error: " . $sql . "<br>" . $db->error);
 	
-	$displayTable = $optionsTable;
-	$displayName = $optionsName;
+	$displayTable = $choicesTable;
+	$displayName = $choicesName;
 	
 } else {
 	
