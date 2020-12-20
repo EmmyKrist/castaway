@@ -1,3 +1,5 @@
+*
+
 {box-sizing: border-box; }
 .header {
   padding: 25px;
@@ -10,6 +12,7 @@ h1 {
 text-align: center; 
 font-family: 'Permanent Marker', cursive;
   font-size: 50px;
+  potistion: relative;
 }
 h2 {
   text-align: center; 
@@ -25,7 +28,13 @@ font-family: 'Permanent Marker', cursive;
 
 body {
   background-color: #D4CDAB
- 
+  
+}
+p {
+	text-align: center; 
+font-family: 'Permanent Marker', cursive;
+  position: relative;
+	
 }
 
 div.textbox {
