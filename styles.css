@@ -17,12 +17,14 @@ h2 {
   text-align: center; 
 font-family: 'Permanent Marker', cursive;
   font-size: 50px;
+  position: relative;
 }
 
 h3 {
   text-align: center; 
 font-family: 'Permanent Marker', cursive;
   font-size: 50px;
+  position: relative;
 }
 
 body {
@@ -32,6 +34,7 @@ body {
 p {
 	text-align: center; 
 font-family: 'Permanent Marker', cursive;
+  position: relative;
 	
 }
 
@@ -43,6 +46,7 @@ div.textbox {
   margin-right: 10px;
   min-width: 200px;
   max-heigth: 50px;
+  position: relative;
 }
 #h1banner {
   position: relative;
@@ -53,4 +57,5 @@ img {
   display: block;
   width: 550px;
   height: 300px;
+  position: relative;
 }

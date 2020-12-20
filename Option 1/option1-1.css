@@ -12,7 +12,7 @@ h1 {
 text-align: center; 
 font-family: 'Permanent Marker', cursive;
   font-size: 50px;
-  position: realative;
+  potistion: relative;
 }
 h2 {
   text-align: center; 
@@ -33,6 +33,7 @@ body {
 p {
 	text-align: center; 
 font-family: 'Permanent Marker', cursive;
+  position: relative;
 	
 }
 

@@ -30,6 +30,7 @@ body {
 p {
 	text-align: center; 
 font-family: 'Permanent Marker', cursive;
+  font-size: 40px;
 	
 }
 
@@ -51,4 +52,6 @@ img {
   display: block;
   width: 550px;
   height: 300px;
+  
+  
 }
