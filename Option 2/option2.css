@@ -45,6 +45,11 @@ div.textbox {
   margin-right: 10px;
   min-width: 200px;
   max-heigth: 50px;
+  position: relative;
+  border-radius: 10px;
+  padding: 20px;
+  
+
 }
 #h1banner {
   position: relative;

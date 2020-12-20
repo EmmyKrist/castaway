@@ -41,9 +41,15 @@ div.textbox {
   background-color: #93C0A4;
   width: calc(100%/2 - 10px);
   Display: inline-block;
+  float: left;
   margin-right: 10px;
   min-width: 200px;
   max-heigth: 50px;
+  position: relative;
+  border-radius: 10px;
+  padding: 20px;
+  
+
 }
 #h1banner {
   position: relative;
